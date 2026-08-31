@@ -3,7 +3,7 @@ name: Sync Leetcode
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * 6"
+    - cron: '0 16 * * *'  # 16:00 UTC is exactly 12:00 AM (midnight) SGT
 
 permissions:
   contents: write

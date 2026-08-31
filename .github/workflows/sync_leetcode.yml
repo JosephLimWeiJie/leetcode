@@ -21,4 +21,4 @@ jobs:
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: solutions
           verbose: true
-          commit-header: "[LeetCode Sync]"
+          commit-header: "Sync leetcode soultions."

@@ -13,12 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Add a checkout step so the container can see your repository files
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Manually register your credentials so git attributes the files to you
+      # Use your real GitHub email, or your private username@users.noreply.github.com email
+      - name: Configure Git Credentials
+        run: |
+          git config --global user.email "limweijie@live.com.sg"
+          git config --global user.name "Joseph Lim Wei Jie"
+
+      # Step 3: Run the sync utility utilizing your personal access token
       - name: Sync
         uses: JosephLimWeiJie/leetcode-sync@master
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ secrets.SYNC_PAT }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: solutions
           verbose: true
-          commit-header: "Sync leetcode soultions."
+          commit-header: "Sync leetcode solutions."
